@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { View, StyleSheet, FlatList, ActivityIndicator } from 'react-native'
+import { View, StyleSheet, FlatList, ActivityIndicator, Text, Button } from 'react-native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { connect } from 'react-redux'
 import { ItemDetails, ListDetails, RootStackParamList, UIState } from '../types'
@@ -7,6 +7,7 @@ import ProductItem from './components/ProductItem'
 import { RootState } from '../store'
 import { fetchListDetails } from './actions'
 import { LIST } from '../constants'
+import { GENERIC_ERROR_MSG, RETRY } from '../stringliterals'
 
 const styles = StyleSheet.create({
     container: {
@@ -14,6 +15,16 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    errorContainer: {
+        flex: 1,
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 16,
+    },
+    errorMessage: {
+        marginBottom: 16,
     },
 })
 
@@ -26,8 +37,12 @@ interface ProductListProps {
 const ProductList = (props: ProductListProps) => {
     const { navigation, fetchListDetails, listDetails } = props
 
-    useEffect(() => {
+    const init = () => {
         fetchListDetails()
+    }
+
+    useEffect(() => {
+        init()
     }, [])
 
     const onItemPress = (itemDetails: ItemDetails) => {
@@ -53,11 +68,20 @@ const ProductList = (props: ProductListProps) => {
         </View>
     )
 
+    const renderError = (
+        <View style={styles.errorContainer}>
+            <Text style={styles.errorMessage}> {GENERIC_ERROR_MSG}</Text>
+            <Button title={RETRY} onPress={init} />
+        </View>
+    )
+
     switch (listDetails.uiState) {
         case UIState.LOADING:
             return renderLoading
         case UIState.FINISHED:
             return renderList
+        case UIState.ERROR:
+            return renderError
         default:
             return null
     }

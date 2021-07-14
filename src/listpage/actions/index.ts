@@ -5,8 +5,18 @@ import { AppDispatch, RootState } from '../../store'
 // Fetch list details
 export const fetchListDetails = () => async (dispatch: AppDispatch, state: RootState) => {
     try {
+        // Set UI state to loading.
+        dispatch({
+            type: LIST,
+            payload: {
+                uiState: UIState.LOADING,
+            },
+        })
+
         const response = await fetch('https://api.jsonbin.io/b/60edc359a917050205c697f0')
         const data = await response.json()
+
+        // Set UI state to finished.
         dispatch({
             type: LIST,
             payload: {
@@ -15,11 +25,11 @@ export const fetchListDetails = () => async (dispatch: AppDispatch, state: RootS
             },
         })
     } catch (error) {
+        // Set UI state to error.
         dispatch({
             type: LIST,
             payload: {
                 uiState: UIState.ERROR,
-                data: [],
             },
         })
     }
