@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Text, StyleSheet, View, ScrollView, TouchableOpacity } from 'react-native'
+import { Image, Text, StyleSheet, View, ScrollView, TouchableOpacity, Alert } from 'react-native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { RouteProp } from '@react-navigation/native'
 import { BUY_NOW, EASY_RETURNS_TITLE, EASY_RETURN_SUBTITLE, PRICE } from '../stringliterals'
@@ -69,24 +69,42 @@ const ProductDescription = (props: DescriptionProps) => {
         },
     } = props
 
+    const handleBuyButtonPress = () => {
+        Alert.alert('React native bootcamp', 'Added to cart', [{ text: 'OK' }])
+    }
+
+    const detailsContainer = (
+        <View style={styles.detailsContainer}>
+            <Text style={styles.title}>
+                <Text style={styles.brand}>{`${itemDetails.brand} `}</Text>
+                <Text>{itemDetails.productName}</Text>
+            </Text>
+            <Text style={styles.price}>{PRICE(itemDetails.price)}</Text>
+        </View>
+    )
+
+    const divider = <View style={styles.divider} />
+
+    const easyReturnsContainer = (
+        <View style={styles.detailsContainer}>
+            <Text style={styles.easyReturnsTitle}>{EASY_RETURNS_TITLE}</Text>
+            <Text style={styles.easyReturnsSubtitle}>{EASY_RETURN_SUBTITLE}</Text>
+        </View>
+    )
+
+    const buyButton = (
+        <TouchableOpacity activeOpacity={0.5} style={styles.button} onPress={handleBuyButtonPress}>
+            <Text style={styles.buttonText}>{BUY_NOW}</Text>
+        </TouchableOpacity>
+    )
+
     return (
         <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
             <Image style={styles.productImage} source={{ uri: itemDetails.image }} />
-            <View style={styles.detailsContainer}>
-                <Text style={styles.title}>
-                    <Text style={styles.brand}>{`${itemDetails.brand} `}</Text>
-                    <Text>{itemDetails.productName}</Text>
-                </Text>
-                <Text style={styles.price}>{PRICE(itemDetails.price)}</Text>
-            </View>
-            <View style={styles.divider} />
-            <View style={styles.detailsContainer}>
-                <Text style={styles.easyReturnsTitle}>{EASY_RETURNS_TITLE}</Text>
-                <Text style={styles.easyReturnsSubtitle}>{EASY_RETURN_SUBTITLE}</Text>
-            </View>
-            <TouchableOpacity activeOpacity={0.5} style={styles.button}>
-                <Text style={styles.buttonText}>{BUY_NOW}</Text>
-            </TouchableOpacity>
+            {detailsContainer}
+            {divider}
+            {easyReturnsContainer}
+            {buyButton}
         </ScrollView>
     )
 }
