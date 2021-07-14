@@ -1,6 +1,6 @@
 import { AnyAction } from '@reduxjs/toolkit'
 import { LIST } from '../../constants'
-import { UIState } from '../../global'
+import { UIState } from '../../types'
 
 const initialListState = {
     uiState: UIState.LOADING,

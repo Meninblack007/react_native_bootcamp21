@@ -1,14 +1,14 @@
 import React from 'react'
 import { View, TouchableOpacity, Text, StyleSheet, Image, Dimensions } from 'react-native'
-import { ItemDetails } from '../global'
-import { PRICE } from '../stringliterals'
+import { ItemDetails } from '../../types'
+import { PRICE } from '../../stringliterals'
 
 const styles = StyleSheet.create({
     container: {
         width: Dimensions.get('window').width / 2,
         height: 350,
         borderWidth: 0.5,
-        borderColor: 'grey',
+        borderColor: 'rgba(33,33,33,0.30)',
     },
     image: {
         flex: 1,

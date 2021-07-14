@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, Button, View, StyleSheet } from 'react-native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { NAVIGATE_MESSAGE, WELCOME_MESSAGE } from '../stringliterals'
-import { RootStackParamList } from '../global'
+import { RootStackParamList } from '../types'
 
 const styles = StyleSheet.create({
     container: {

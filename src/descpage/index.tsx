@@ -3,7 +3,7 @@ import { Image, Text, StyleSheet, View, ScrollView } from 'react-native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { RouteProp } from '@react-navigation/native'
 import { PRICE } from '../stringliterals'
-import { RootStackParamList } from '../global'
+import { RootStackParamList } from '../types'
 
 const styles = StyleSheet.create({
     scrollContainer: {

@@ -1,5 +1,5 @@
 import { LIST } from '../../constants'
-import { UIState } from '../../global'
+import { UIState } from '../../types'
 import { AppDispatch, RootState } from '../../store'
 
 // Fetch list details

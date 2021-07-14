@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { View, StyleSheet, FlatList, Text, ActivityIndicator } from 'react-native'
+import { View, StyleSheet, FlatList, ActivityIndicator } from 'react-native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { connect } from 'react-redux'
-import { ItemDetails, ListDetails, RootStackParamList, UIState } from '../global'
-import ProductItem from './item'
+import { ItemDetails, ListDetails, RootStackParamList, UIState } from '../types'
+import ProductItem from './components/ProductItem'
 import { RootState } from '../store'
 import { fetchListDetails } from './actions'
 import { LIST } from '../constants'
@@ -16,13 +16,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 })
-interface ListProps {
+
+interface ProductListProps {
     navigation: StackNavigationProp<RootStackParamList, 'list'>
     fetchListDetails: () => void
     listDetails: ListDetails
 }
 
-const ProductList = (props: ListProps) => {
+const ProductList = (props: ProductListProps) => {
     const { navigation, fetchListDetails, listDetails } = props
 
     useEffect(() => {
@@ -58,7 +59,7 @@ const ProductList = (props: ListProps) => {
         case UIState.FINISHED:
             return renderList
         default:
-            break
+            return null
     }
 }
 
