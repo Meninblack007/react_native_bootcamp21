@@ -2,6 +2,8 @@
 
 Welcome new joiners! This is a basic React Native application with navigation and redux support.
 
+----
+
 ## Setup
 
 ### Prerequisites
@@ -12,6 +14,8 @@ You need to setup react native dev environment in your system.
 brew install node
 brew install watchman
 brew install --cask adoptopenjdk/openjdk/adoptopenjdk8
+sudo gem install cocoapods
+npm i -g @react-native-community/cli
 ```
 
 You also need to download and setup Android Studio and XCode.
@@ -20,9 +24,9 @@ You also need to download and setup Android Studio and XCode.
 
 ### Building the App
 
-We can build the react-native application either using `react cli` or by manually running platform specific scripts.
+We can build the react-native application either using `react native cli` or by manually running platform specific scripts.
 
-#### Using react cli
+#### Using react native cli
 
 ```
 react-native run-android // run android app
@@ -47,6 +51,8 @@ This command will build the APK and installed it in the connected device.
 Make sure your emulator is running before running this command.
 
 For building the iOS app, we would require XCode. You need to open the `ios` directory as a project in XCode and hit run.
+
+----
 
 ## App Screenshots
 
