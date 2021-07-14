@@ -54,9 +54,12 @@ For building the iOS app, we would require XCode. You need to open the `ios` dir
 
 ----
 
-## App Screenshots
+## App UI
 
-![](.meta/product_list.png)
+![](.meta/app.gif)
 
+----
 
-![](.meta/product_details.png)
+## Other Resources
+
+- [Presentation Deck](https://docs.google.com/presentation/d/15eTzBEgbTw9cWA3GGjoRviSYIluz3mnkFYKap57gmzk/edit?usp=sharing)
