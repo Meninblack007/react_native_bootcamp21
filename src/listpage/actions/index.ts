@@ -13,7 +13,7 @@ export const fetchListDetails = () => async (dispatch: AppDispatch, state: RootS
             },
         })
 
-        const response = await fetch('https://api.jsonbin.io/b/60edc359a917050205c697f0')
+        const response = await fetch('https://api.jsonbin.io/v3/b/60edc359a917050205c697f0')
         const data = await response.json()
 
         // Set UI state to finished.
@@ -21,7 +21,7 @@ export const fetchListDetails = () => async (dispatch: AppDispatch, state: RootS
             type: LIST,
             payload: {
                 uiState: UIState.FINISHED,
-                data: data,
+                data: data.record,
             },
         })
     } catch (error) {
